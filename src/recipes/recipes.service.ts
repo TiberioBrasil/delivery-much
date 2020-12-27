@@ -49,10 +49,28 @@ export class RecipesService {
     // Sets the final validIngredients const
     const validIngredients = validIngredientsArray.join(',');
 
-    // Use axios to fetch data from a specific URL usibg built-in HttpModule
-    const recipesResponse = await this.apiServicesService.getHttpResponse(
+    // Receives the recipes result list
+    const recipesList = await this.getRecipes(
       `http://www.recipepuppy.com/api/?i=${validIngredients}`,
     );
+
+    // For any recipes call the getGiphy function to retrieve a gif based on recipe title
+    const returnData = await Promise.all(
+      recipesList.map(async (recipe: IRecipeResultsResponse) => {
+        return this.getGiphy(recipe);
+      }),
+    );
+
+    // Return the object
+    return {
+      keywords: validIngredientsArray,
+      recipes: returnData,
+    };
+  }
+
+  async getRecipes(url: string): Promise<IRecipeResultsResponse[]> {
+    // Use axios to fetch data from a specific URL usibg built-in HttpModule
+    const recipesResponse = await this.apiServicesService.getHttpResponse(url);
 
     if (!recipesResponse) {
       throw new BadRequestException(
@@ -60,54 +78,50 @@ export class RecipesService {
       );
     }
 
-    const recipe = recipesResponse.results;
+    const returnData = [];
+    recipesResponse.results.map((recipe: IRecipeResultsResponse) => {
+      returnData.push(recipe);
+    });
 
-    const returnData = await Promise.all(
-      recipe.map(
-        async (r: IRecipeResultsResponse): Promise<IRecipe> => {
-          const returnElement = {
-            title: unescape(r.title),
-            ingredients: r.ingredients.split(',').map((item) => {
-              return item.trim();
-            }),
-            link: r.href,
-          };
+    return returnData;
+  }
 
-          try {
-            const giphy = await this.apiServicesService.getHttpResponse(
-              `${process.env.GIPHY_URL}` +
-                `?api_key=${process.env.GIPHY_API_KEY}` +
-                `&q=${r.title}&limit=1&offset=0&rating=g&lang=en`,
-            );
-
-            let giphyImage;
-
-            if (!giphy) {
-              giphyImage = 'Erro ao seconectar à API do Giphy!';
-            } else {
-              giphyImage = giphy.data[0].images.original.url;
-              if (!giphyImage) {
-                giphyImage = 'Giphy não encontrado!';
-              }
-            }
-
-            return {
-              ...returnElement,
-              gif: giphyImage,
-            } as IRecipe;
-          } catch (error) {
-            return {
-              ...returnElement,
-              gif: 'Erro ao seconectar à API do Giphy!',
-            } as IRecipe;
-          }
-        },
-      ),
-    );
-
-    return {
-      keywords: validIngredientsArray,
-      recipes: returnData,
+  async getGiphy(recipe: IRecipeResultsResponse): Promise<IRecipe> {
+    const returnElement = {
+      title: unescape(recipe.title),
+      ingredients: recipe.ingredients.split(',').map((item) => {
+        return item.trim();
+      }),
+      link: recipe.href,
     };
+
+    try {
+      const giphy = await this.apiServicesService.getHttpResponse(
+        `${process.env.GIPHY_URL}` +
+          `?api_key=${process.env.GIPHY_API_KEY}` +
+          `&q=${recipe.title}&limit=1&offset=0&rating=g&lang=en`,
+      );
+
+      let giphyImage: string;
+
+      if (!giphy) {
+        giphyImage = 'Erro ao seconectar à API do Giphy!';
+      } else {
+        giphyImage = giphy.data[0].images.original.url;
+        if (!giphyImage) {
+          giphyImage = 'Giphy não encontrado!';
+        }
+      }
+
+      return {
+        ...returnElement,
+        gif: giphyImage,
+      } as IRecipe;
+    } catch (error) {
+      return {
+        ...returnElement,
+        gif: 'Erro ao seconectar à API do Giphy!',
+      } as IRecipe;
+    }
   }
 }
