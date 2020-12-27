@@ -95,33 +95,26 @@ export class RecipesService {
       link: recipe.href,
     };
 
-    try {
-      const giphy = await this.apiServicesService.getHttpResponse(
-        `${process.env.GIPHY_URL}` +
-          `?api_key=${process.env.GIPHY_API_KEY}` +
-          `&q=${recipe.title}&limit=1&offset=0&rating=g&lang=en`,
-      );
+    const giphy = await this.apiServicesService.getHttpResponse(
+      `${process.env.GIPHY_URL}` +
+        `?api_key=${process.env.GIPHY_API_KEY}` +
+        `&q=${recipe.title}&limit=1&offset=0&rating=g&lang=en`,
+    );
 
-      let giphyImage: string;
+    let giphyImage: string;
 
-      if (!giphy) {
-        giphyImage = 'Erro ao seconectar à API do Giphy!';
-      } else {
-        giphyImage = giphy.data[0].images.original.url;
-        if (!giphyImage) {
-          giphyImage = 'Giphy não encontrado!';
-        }
+    if (!giphy) {
+      giphyImage = 'Erro ao seconectar à API do Giphy!';
+    } else {
+      giphyImage = giphy.data[0].images.original.url;
+      if (!giphyImage) {
+        giphyImage = 'Giphy não encontrado!';
       }
-
-      return {
-        ...returnElement,
-        gif: giphyImage,
-      } as IRecipe;
-    } catch (error) {
-      return {
-        ...returnElement,
-        gif: 'Erro ao seconectar à API do Giphy!',
-      } as IRecipe;
     }
+
+    return {
+      ...returnElement,
+      gif: giphyImage,
+    } as IRecipe;
   }
 }
