@@ -12,6 +12,30 @@ Projeto realizado por Tibério Ferreira Lima Brasil [tiberiobrasil@gmail.com](ma
 
 &nbsp;
 
+## Ferramentas Utilziadas
+
+Para desenvolvimento desse aplicativo foram utilizadas as ferramentas à seguir:
+
+- NestJS (framework) utilizando Typescript
+- Jest (testes unitários e de integração)
+- Swagger (documentação da api)
+- Lint e Prettier (formatação e qualidade do código)
+
+&nbsp;
+
+## Workflow
+
+Foram criadas duas principais branches no GitHub:
+
+- `develop` - Branch principal. Sempre que um novo merge é enviado ao repositório por padrão será feito nela.
+- `master` - Branch de produção. O código deve ser testado na branch específica de onde foi criado e após os testes deve ser mergeado na develop. Caso esteja tudo OK deve ser feito um Release da branch develop para a master, inserindo as atualizações no servidor de produção.
+
+Sempre que uma nova MR for feita a mesma deve estar em uma branch específica utilizando o `gitmoji` e `git flow`.
+
+O GitHub actions entra em ação sempre que uma novo pull ou merge request é feito no repositório. Serão realizados os testes unitários, garantindo o funcionamento das alterações e o linting do projeto, garantindo a formatação e qualidade do código.
+
+&nbsp;
+
 ## Instalação
 
 Executar o comando para instalar as dependências
@@ -90,7 +114,7 @@ npm run test:e2e
 
 ## Cobertura de Testes Unitários (100% de cobertura)
 
-Executar o comando abaixo para gerar o relatório de coberta de testes unitários.
+Executar o comando abaixo para gerar o relatório de coberta de testes unitários. Foi atingido o percentual de 100% de cobertura nos services e controlles do projeto.
 
 ```bash
 yarn test:cov
@@ -117,7 +141,7 @@ Onde `{PORT}` é o valor da porta configurada no arquivo `.env`.
 
 Criado worflow no GitHub Actions para que sempre que um novo `push` ou `merge` for feito ao repositório uma série de comando serão executados.
 
-Dentre os comandos estão os testes e o linting do projeto, garantindo a eficácia do código e a padronização na escrita.
+Dentre os comandos estão a garantis que os testes não contém erros e que também não há erros de linting no projeto, garantindo a padronização do código.
 
 Para mais informações acessar o arquivo:
 
