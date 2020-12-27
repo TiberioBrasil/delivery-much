@@ -117,4 +117,4 @@ Onde `{PORT}` é o valor da porta configurada no arquivo `.env`.
 
 Segue link para acesso ao aplicativo hospedado no heroku. Segue exemplo de requisição:
 
-`https://delivery-much-tech-challenge.herokuapp.com/recipes?i=onion,tomato`
+https://delivery-much-tech-challenge.herokuapp.com/recipes?i=onion,tomato(https://delivery-much-tech-challenge.herokuapp.com/recipes?i=onion,tomato)
