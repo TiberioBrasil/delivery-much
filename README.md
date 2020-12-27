@@ -110,3 +110,11 @@ Foi utilizada a lib Swagger para documentar a API. A mesma pode ser vista em:
 `http://localhost:{PORT}/api`
 
 Onde `{PORT}` é o valor da porta configurada no arquivo `.env`.
+
+&nbsp;
+
+## Desafio em Produção no Heroku
+
+Segue link para acesso ao aplicativo hospedado no heroku. Segue exemplo de requisição:
+
+`https://delivery-much-tech-challenge.herokuapp.com/recipes?i=onion,tomato`
