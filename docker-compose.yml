@@ -1,0 +1,18 @@
+version: '2.4'
+
+services:
+  app:
+    build:
+      context: .
+      target: build
+    command: yarn start:dev
+    env_file: .env
+    networks:
+      - net
+    ports:
+      - ${PORT:-3333}:${PORT:-3333}
+    volumes:
+      - ./:/home/node/app:delegated
+
+networks:
+  net:
