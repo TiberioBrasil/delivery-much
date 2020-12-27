@@ -1,4 +1,4 @@
-import { BadRequestException, HttpService, Injectable } from '@nestjs/common';
+import { HttpService, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ApiServicesService {
