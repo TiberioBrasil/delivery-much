@@ -88,7 +88,7 @@ npm run test:e2e
 
 &nbsp;
 
-## Cobertura de Testes Unitários
+## Cobertura de Testes Unitários (100% de cobertura)
 
 Executar o comando abaixo para gerar o relatório de coberta de testes unitários.
 
@@ -110,6 +110,18 @@ Foi utilizada a lib Swagger para documentar a API. A mesma pode ser vista em:
 `http://localhost:{PORT}/api`
 
 Onde `{PORT}` é o valor da porta configurada no arquivo `.env`.
+
+&nbsp;
+
+## GitHub Actions
+
+Criado worflow no GitHub Actions para que sempre que um novo `push` ou `merge` for feito ao repositório uma série de comando serão executados.
+
+Dentre os comandos estão os testes e o linting do projeto, garantindo a eficácia do código e a padronização na escrita.
+
+Para mais informações acessar o arquivo:
+
+`.github/worflows/main.yml`
 
 &nbsp;
 
