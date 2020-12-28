@@ -8,33 +8,20 @@ Repositório do Desafio: https://github.com/delivery-much/challenge
 
 Menu:
 
-[Quem Sou](#quem-sou)
-
-[Ferramentas Utilizadas](#ferramentas-utilizadas)
-
-[Workflow](#workflow)
-
-[Instalação](#instalação)
-
-[Arquivo de configuração](#arquivo-de-configuração)
-
-[Executar o projeto sem Docker](#executar-o-projeto-sem-docker)
-
-[Executar o projeto com Docker](#executar-o-projeto-com-docker)
-
-[Acesso ao projeto](#acesso-ao-projeto)
-
-[Testes Unitários](#testes-unitários)
-
-[Testes de Integração](#testes-de-integração)
-
-[ Cobertura de Testes Unitários (100% de cobertura)](#cobertura-de-testes-unitários)
-
-[Documentação da API](#documentação-da-api)
-
-[GitHub Actions](#github-actions)
-
-[ Desafio em Produção no Heroku](#desafio-em-produção-no-heroku)
+- [Quem Sou](#quem-sou)
+- [Ferramentas Utilizadas](#ferramentas-utilizadas)
+- [Workflow](#workflow)
+- [Instalação](#instalação)
+- [Arquivo de configuração](#arquivo-de-configuração)
+- [Executar o projeto sem Docker](#executar-o-projeto-sem-docker)
+- [Executar o projeto com Docker](#executar-o-projeto-com-docker)
+- [Acesso ao projeto](#acesso-ao-projeto)
+- [Testes Unitários](#testes-unitários)
+- [Testes de Integração](#testes-de-integração)
+- [ Cobertura de Testes Unitários (100% de cobertura)](#cobertura-de-testes-unitários)
+- [Documentação da API](#documentação-da-api)
+- [GitHub Actions](#github-actions)
+- [ Desafio em Produção no Heroku](#desafio-em-produção-no-heroku)
 
 &nbsp;
 
