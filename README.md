@@ -6,9 +6,65 @@ Repositório do Desafio: https://github.com/delivery-much/challenge
 
 &nbsp;
 
+Menu:
+
+[Quem Sou](#quem-sou)
+
+[Ferramentas Utilizadas](#ferramentas-utilizadas)
+
+[Workflow](#workflow)
+
+[Instalação](#instalação)
+
+[Arquivo de configuração](#arquivo-de-configuração)
+
+[Executar o projeto sem Docker](#executar-o-projeto-sem-docker)
+
+[Executar o projeto com Docker](#executar-o-projeto-com-docker)
+
+[Acesso ao projeto](#acesso-ao-projeto)
+
+[Testes Unitários](#testes-unitários)
+
+[Testes de Integração](#testes-de-integração)
+
+[ Cobertura de Testes Unitários (100% de cobertura)](#cobertura-de-testes-unitários)
+
+[Documentação da API](#documentação-da-api)
+
+[GitHub Actions](#github-actions)
+
+[ Desafio em Produção no Heroku](#desafio-em-produção-no-heroku)
+
+&nbsp;
+
 ## Quem Sou
 
 Projeto realizado por Tibério Ferreira Lima Brasil [tiberiobrasil@gmail.com](mailto:tiberiobrasil@gmail.com)
+
+&nbsp;
+
+## Ferramentas Utilizadas
+
+Para desenvolvimento desse aplicativo foram utilizadas as ferramentas à seguir:
+
+- NestJS (framework) utilizando Typescript
+- Jest (testes unitários e de integração)
+- Swagger (documentação da api)
+- Lint e Prettier (formatação e qualidade do código)
+
+&nbsp;
+
+## Workflow
+
+Foram criadas duas principais branches no GitHub:
+
+- `develop` - Branch principal. Sempre que um novo merge é enviado ao repositório por padrão será feito nela.
+- `master` - Branch de produção. O código deve ser testado na branch específica de onde foi criado e após os testes deve ser mergeado na develop. Caso esteja tudo OK deve ser feito um Release da branch develop para a master, inserindo as atualizações no servidor de produção.
+
+Sempre que uma nova MR for feita a mesma deve estar em uma branch específica utilizando o `gitmoji` e `git flow`.
+
+O GitHub actions entra em ação sempre que uma novo pull ou merge request é feito no repositório. Serão realizados os testes unitários, garantindo o funcionamento das alterações e o linting do projeto, garantindo a formatação e qualidade do código.
 
 &nbsp;
 
@@ -69,9 +125,9 @@ Mais detalhes podem ser vistos na [Documentação da API](#Documentação-da-API
 Executar testes unitários nos services e controllers:
 
 ```bash
-yarn test
+$ yarn test
 # ou
-npm run test
+$ npm run test
 ```
 
 &nbsp;
@@ -81,21 +137,21 @@ npm run test
 Executar testes unitários no endpoint de retorno das receitas:
 
 ```bash
-yarn test:e2e
+$ yarn test:e2e
 # ou
-npm run test:e2e
+$ npm run test:e2e
 ```
 
 &nbsp;
 
 ## Cobertura de Testes Unitários
 
-Executar o comando abaixo para gerar o relatório de coberta de testes unitários.
+Executar o comando abaixo para gerar o relatório de coberta de testes unitários. Foi atingido o percentual de `100% de cobertura` nos services e controlles do projeto.
 
 ```bash
-yarn test:cov
+$ yarn test:cov
 # ou
-npm run test:cov
+$ npm run test:cov
 ```
 
 Após executado será criada uma pasta `coverage` na raiz do projeto. Para visualizar o relatório basta abrir o arquivo a seguir no navegador:
@@ -110,6 +166,18 @@ Foi utilizada a lib Swagger para documentar a API. A mesma pode ser vista em:
 `http://localhost:{PORT}/api`
 
 Onde `{PORT}` é o valor da porta configurada no arquivo `.env`.
+
+&nbsp;
+
+## GitHub Actions
+
+Criado worflow no GitHub Actions para que sempre que um novo `push` ou `merge` for feito ao repositório uma série de comando serão executados.
+
+Dentre os comandos estão a garantis que os testes não contém erros e que também não há erros de linting no projeto, garantindo a padronização do código.
+
+Para mais informações acessar o arquivo:
+
+`.github/worflows/main.yml`
 
 &nbsp;
 
