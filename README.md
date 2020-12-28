@@ -6,13 +6,45 @@ Repositório do Desafio: https://github.com/delivery-much/challenge
 
 &nbsp;
 
+Menu:
+
+[Quem Sou](#quem-sou)
+
+[Ferramentas Utilizadas](#ferramentas-utilizadas)
+
+[Workflow](#workflow)
+
+[Instalação](#instalação)
+
+[Arquivo de configuração](#arquivo-de-configuração)
+
+[Executar o projeto sem Docker](#executar-o-projeto-sem-docker)
+
+[Executar o projeto com Docker](#executar-o-projeto-com-docker)
+
+[Acesso ao projeto](#acesso-ao-projeto)
+
+[Testes Unitários](#testes-unitários)
+
+[Testes de Integração](#testes-de-integração)
+
+[ Cobertura de Testes Unitários (100% de cobertura)](#cobertura-de-testes-unitários)
+
+[Documentação da API](#documentação-da-api)
+
+[GitHub Actions](#github-actions)
+
+[ Desafio em Produção no Heroku](#desafio-em-produção-no-heroku)
+
+&nbsp;
+
 ## Quem Sou
 
 Projeto realizado por Tibério Ferreira Lima Brasil [tiberiobrasil@gmail.com](mailto:tiberiobrasil@gmail.com)
 
 &nbsp;
 
-## Ferramentas Utilziadas
+## Ferramentas Utilizadas
 
 Para desenvolvimento desse aplicativo foram utilizadas as ferramentas à seguir:
 
@@ -93,9 +125,9 @@ Mais detalhes podem ser vistos na [Documentação da API](#Documentação-da-API
 Executar testes unitários nos services e controllers:
 
 ```bash
-yarn test
+$ yarn test
 # ou
-npm run test
+$ npm run test
 ```
 
 &nbsp;
@@ -105,21 +137,21 @@ npm run test
 Executar testes unitários no endpoint de retorno das receitas:
 
 ```bash
-yarn test:e2e
+$ yarn test:e2e
 # ou
-npm run test:e2e
+$ npm run test:e2e
 ```
 
 &nbsp;
 
-## Cobertura de Testes Unitários (100% de cobertura)
+## Cobertura de Testes Unitários
 
-Executar o comando abaixo para gerar o relatório de coberta de testes unitários. Foi atingido o percentual de 100% de cobertura nos services e controlles do projeto.
+Executar o comando abaixo para gerar o relatório de coberta de testes unitários. Foi atingido o percentual de `100% de cobertura` nos services e controlles do projeto.
 
 ```bash
-yarn test:cov
+$ yarn test:cov
 # ou
-npm run test:cov
+$ npm run test:cov
 ```
 
 Após executado será criada uma pasta `coverage` na raiz do projeto. Para visualizar o relatório basta abrir o arquivo a seguir no navegador:
